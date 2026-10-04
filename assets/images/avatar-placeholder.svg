@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3b82f6" />
+      <stop offset="50%" stop-color="#6366f1" />
+      <stop offset="100%" stop-color="#8b5cf6" />
+    </linearGradient>
+    <linearGradient id="suitGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b" />
+      <stop offset="100%" stop-color="#0f172a" />
+    </linearGradient>
+    <linearGradient id="skinGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fbd5b5" />
+      <stop offset="100%" stop-color="#e2b18c" />
+    </linearGradient>
+    <linearGradient id="hairGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2d1e18" />
+      <stop offset="100%" stop-color="#19110d" />
+    </linearGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#0f172a" flood-opacity="0.25"/>
+    </filter>
+  </defs>
+
+  <!-- Background Circle with Soft Glow -->
+  <circle cx="200" cy="200" r="190" fill="url(#bgGrad)" opacity="0.15" />
+  <circle cx="200" cy="200" r="175" fill="url(#bgGrad)" opacity="0.2" />
+
+  <!-- Code/Tech subtle background rings -->
+  <circle cx="200" cy="200" r="160" fill="none" stroke="#6366f1" stroke-width="2" stroke-dasharray="6,8" opacity="0.4" />
+  
+  <g filter="url(#shadow)">
+    <!-- Hair back -->
+    <path d="M130 150 Q110 240 135 285 Q160 270 170 240 Z" fill="url(#hairGrad)" />
+    <path d="M270 150 Q290 240 265 285 Q240 270 230 240 Z" fill="url(#hairGrad)" />
+
+    <!-- Shoulders & Academic Blazer -->
+    <path d="M100 360 C100 290 145 260 200 260 C255 260 300 290 300 360 Z" fill="url(#suitGrad)" />
+    <!-- Blouse / Inner Collar -->
+    <path d="M175 260 L200 305 L225 260 Z" fill="#ffffff" />
+    <path d="M185 260 L200 295 L215 260 Z" fill="#6366f1" opacity="0.8" />
+    
+    <!-- Neck -->
+    <path d="M180 220 L220 220 L220 265 L180 265 Z" fill="url(#skinGrad)" />
+
+    <!-- Head / Face -->
+    <path d="M145 170 C145 235 170 248 200 248 C230 248 255 235 255 170 C255 115 230 100 200 100 C170 100 145 115 145 170 Z" fill="url(#skinGrad)" />
+
+    <!-- Hair front / Styling -->
+    <path d="M140 160 C140 105 170 85 200 85 C235 85 260 105 260 160 C250 140 235 125 200 125 C165 125 148 142 140 160 Z" fill="url(#hairGrad)" />
+    <path d="M142 160 Q150 190 158 205 Q152 170 155 150 Z" fill="url(#hairGrad)" />
+    <path d="M258 160 Q250 190 242 205 Q248 170 245 150 Z" fill="url(#hairGrad)" />
+
+    <!-- Eyebrows -->
+    <path d="M165 162 Q177 157 188 162" stroke="#19110d" stroke-width="2.5" stroke-linecap="round" fill="none" />
+    <path d="M212 162 Q223 157 235 162" stroke="#19110d" stroke-width="2.5" stroke-linecap="round" fill="none" />
+
+    <!-- Professional Glasses -->
+    <rect x="156" y="167" width="36" height="24" rx="6" fill="none" stroke="#334155" stroke-width="2.5" />
+    <rect x="208" y="167" width="36" height="24" rx="6" fill="none" stroke="#334155" stroke-width="2.5" />
+    <line x1="192" y1="177" x2="208" y2="177" stroke="#334155" stroke-width="2.5" />
+    <path d="M156 175 L145 173" stroke="#334155" stroke-width="2" />
+    <path d="M244 175 L255 173" stroke="#334155" stroke-width="2" />
+
+    <!-- Eyes behind glasses -->
+    <ellipse cx="174" cy="179" rx="3.5" ry="4" fill="#1e293b" />
+    <ellipse cx="226" cy="179" rx="3.5" ry="4" fill="#1e293b" />
+    <circle cx="175" cy="177" r="1" fill="#ffffff" />
+    <circle cx="227" cy="177" r="1" fill="#ffffff" />
+
+    <!-- Nose -->
+    <path d="M200 182 Q202 196 197 202 L203 202" stroke="#d49b74" stroke-width="2" stroke-linecap="round" fill="none" />
+
+    <!-- Friendly, Warm Smile -->
+    <path d="M185 218 Q200 230 215 218" stroke="#be123c" stroke-width="2.5" stroke-linecap="round" fill="none" />
+
+    <!-- Graduation Cap / Academic Badge Icon Floating near shoulder -->
+    <g transform="translate(285, 275)">
+      <circle cx="20" cy="20" r="24" fill="#6366f1" />
+      <polygon points="20,10 32,16 20,22 8,16" fill="#ffffff" />
+      <path d="M12,19 L12,25 C12,28 28,28 28,25 L28,19" fill="none" stroke="#ffffff" stroke-width="1.5" />
+      <line x1="30" y1="17" x2="30" y2="27" stroke="#ffd700" stroke-width="1.5" />
+    </g>
+  </g>
+</svg>
