@@ -95,9 +95,9 @@ function renderHeroAndAbout() {
     badgesContainer.innerHTML = personalInfo.highlights
       .map(
         (h, i) => `
-        <div class="px-3.5 py-2 rounded-lg bg-indigo-50/70 dark:bg-slate-800/80 border border-indigo-100 dark:border-slate-700 reveal-on-scroll reveal-scale stagger-${(i % 3) + 1}">
+        <div class="px-3.5 py-2 rounded-lg bg-blue-50/70 dark:bg-slate-800/80 border border-blue-100 dark:border-slate-700 reveal-on-scroll reveal-scale stagger-${(i % 3) + 1}">
           <span class="block text-xs font-medium text-slate-500 dark:text-slate-400">${h.label}</span>
-          <span class="block text-sm font-semibold text-indigo-900 dark:text-indigo-300">${h.value}</span>
+          <span class="block text-sm font-semibold text-blue-950 dark:text-blue-300">${h.value}</span>
         </div>`
       )
       .join("");
@@ -114,7 +114,7 @@ function renderStats() {
   container.innerHTML = portfolioData.academicStats
     .map((stat, i) => `
       <div class="glass-card p-5 rounded-2xl text-center reveal-on-scroll reveal-scale stagger-${(i % 4) + 1}">
-        <div class="text-3xl lg:text-4xl font-extrabold text-indigo-600 dark:text-indigo-400 mb-1 stat-number" data-target="${stat.number}">
+        <div class="text-3xl lg:text-4xl font-extrabold text-blue-600 dark:text-blue-400 mb-1 stat-number" data-target="${stat.number}">
           ${stat.number}
         </div>
         <div class="text-xs sm:text-sm font-medium text-slate-600 dark:text-slate-300">
@@ -142,7 +142,7 @@ function renderTimeline() {
           <!-- Timeline Marker -->
           <div class="absolute left-0 top-1 w-6 h-6 rounded-full border-2 ${
             isCurrent
-              ? "bg-indigo-600 border-indigo-200 dark:border-indigo-900 shadow-md shadow-indigo-500/30"
+              ? "bg-blue-600 border-blue-200 dark:border-blue-900 shadow-md shadow-blue-500/30"
               : "bg-white dark:bg-slate-800 border-slate-300 dark:border-slate-600"
           } flex items-center justify-center">
             <span class="w-2 h-2 rounded-full ${isCurrent ? "bg-white" : "bg-slate-400 dark:bg-slate-500"}"></span>
@@ -165,7 +165,7 @@ function renderTimeline() {
               }">
                 ${item.period}
               </span>
-              <span class="text-xs font-medium text-indigo-600 dark:text-indigo-400">
+              <span class="text-xs font-medium text-blue-600 dark:text-blue-400">
                 ${item.type}
               </span>
             </div>
@@ -199,12 +199,12 @@ function renderThesisSpotlight() {
   const t = portfolioData.thesisSpotlight;
 
   container.innerHTML = `
-    <div class="glass-card p-6 sm:p-8 rounded-2xl border-2 border-indigo-200/80 dark:border-indigo-900/60 relative overflow-hidden">
+    <div class="glass-card p-6 sm:p-8 rounded-2xl border-2 border-blue-200/80 dark:border-blue-900/60 relative overflow-hidden">
       <!-- Glow decoration -->
-      <div class="absolute top-0 right-0 -mt-10 -mr-10 w-44 h-44 bg-indigo-500/10 rounded-full blur-2xl pointer-events-none"></div>
+      <div class="absolute top-0 right-0 -mt-10 -mr-10 w-44 h-44 bg-blue-500/10 rounded-full blur-2xl pointer-events-none"></div>
 
       <div class="flex flex-wrap items-center justify-between gap-3 mb-4">
-        <span class="academic-badge bg-indigo-100 text-indigo-800 dark:bg-indigo-950 dark:text-indigo-300">
+        <span class="academic-badge bg-blue-100 text-blue-900 dark:bg-blue-950 dark:text-blue-300">
           🎯 Master's Thesis Spotlight
         </span>
         <span class="text-xs font-semibold px-3 py-1 rounded-full bg-amber-100 text-amber-800 dark:bg-amber-950/70 dark:text-amber-300">
@@ -215,7 +215,7 @@ function renderThesisSpotlight() {
       <h3 class="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white mb-2 leading-snug">
         ${t.title}
       </h3>
-      <p class="text-xs sm:text-sm font-medium text-indigo-600 dark:text-indigo-400 mb-4">
+      <p class="text-xs sm:text-sm font-medium text-blue-600 dark:text-blue-400 mb-4">
         ${t.domain}
       </p>
 
@@ -227,10 +227,10 @@ function renderThesisSpotlight() {
       <div class="mb-6 bg-slate-100 dark:bg-slate-800/80 p-4 rounded-xl border border-slate-200 dark:border-slate-700">
         <div class="flex items-center justify-between text-xs font-semibold text-slate-700 dark:text-slate-300 mb-2">
           <span>Overall Dissertation Progress</span>
-          <span class="text-indigo-600 dark:text-indigo-400">${t.progress}% Completed</span>
+          <span class="text-blue-600 dark:text-blue-400">${t.progress}% Completed</span>
         </div>
         <div class="w-full bg-slate-200 dark:bg-slate-700 rounded-full h-3 overflow-hidden">
-          <div class="bg-indigo-600 dark:bg-indigo-500 h-3 rounded-full progress-striped transition-all duration-1000" style="width: ${t.progress}%"></div>
+          <div class="bg-blue-600 dark:bg-blue-500 h-3 rounded-full progress-striped transition-all duration-1000" style="width: ${t.progress}%"></div>
         </div>
       </div>
 
@@ -281,7 +281,7 @@ function renderCourses() {
         cat => `
         <button type="button" class="course-filter-btn px-4 py-2 rounded-full text-xs font-medium transition-all ${
           activeCourseCategory === cat
-            ? "bg-indigo-600 text-white shadow-sm"
+            ? "bg-blue-600 text-white shadow-sm"
             : "bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700"
         }" data-category="${cat}">
           ${cat}
@@ -309,7 +309,7 @@ function renderCourses() {
         <div>
           <!-- Course Header -->
           <div class="flex items-center justify-between gap-2 mb-3">
-            <span class="px-2.5 py-1 rounded-md text-xs font-mono font-bold bg-indigo-50 dark:bg-indigo-950/70 text-indigo-700 dark:text-indigo-300 border border-indigo-100 dark:border-indigo-900">
+            <span class="px-2.5 py-1 rounded-md text-xs font-mono font-bold bg-blue-50 dark:bg-blue-950/70 text-blue-700 dark:text-blue-300 border border-blue-100 dark:border-blue-900">
               ${course.code}
             </span>
             <span class="text-xs font-medium text-slate-500 dark:text-slate-400">
@@ -331,7 +331,7 @@ function renderCourses() {
               .map(
                 o => `
               <div class="text-xs text-slate-600 dark:text-slate-300 flex items-start gap-1.5">
-                <span class="text-indigo-500 font-bold">•</span>
+                <span class="text-blue-500 font-bold">•</span>
                 <span>${o}</span>
               </div>`
               )
@@ -341,7 +341,7 @@ function renderCourses() {
 
         <!-- Action / Material Buttons -->
         <div class="pt-4 border-t border-slate-200 dark:border-slate-700/80 flex items-center justify-between gap-2">
-          <button type="button" class="open-course-modal text-xs font-semibold text-indigo-600 dark:text-indigo-400 hover:underline flex items-center gap-1" data-course-id="${course.id}">
+          <button type="button" class="open-course-modal text-xs font-semibold text-blue-600 dark:text-blue-400 hover:underline flex items-center gap-1" data-course-id="${course.id}">
             📚 View Study Material
           </button>
           <a href="${course.resources.codeRepo}" target="_blank" rel="noopener noreferrer" class="text-xs text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white flex items-center gap-1">
@@ -386,7 +386,7 @@ function renderPublications() {
         t => `
         <button type="button" class="pub-filter-btn px-3 py-1.5 rounded-full text-xs font-medium transition-all ${
           activePubType === t
-            ? "bg-indigo-600 text-white shadow-sm"
+            ? "bg-blue-600 text-white shadow-sm"
             : "bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700"
         }" data-type="${t}">
           ${t}
@@ -435,7 +435,7 @@ function renderPublications() {
       const formattedAuthors = pub.authors
         .map(a =>
           a.includes("Nandini Bhatt")
-            ? `<strong class="text-indigo-600 dark:text-indigo-300 font-bold">${a}</strong>`
+            ? `<strong class="text-blue-600 dark:text-blue-300 font-bold">${a}</strong>`
             : a
         )
         .join(", ");
@@ -444,7 +444,7 @@ function renderPublications() {
       <article class="glass-card p-6 rounded-2xl mb-4 transition-all reveal-on-scroll reveal-scale stagger-${(i % 4) + 1}">
         <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
           <div class="flex items-center gap-2">
-            <span class="academic-badge bg-indigo-50 dark:bg-indigo-950/80 text-indigo-700 dark:text-indigo-300 border border-indigo-100 dark:border-indigo-900">
+            <span class="academic-badge bg-blue-50 dark:bg-blue-950/80 text-blue-700 dark:text-blue-300 border border-blue-100 dark:border-blue-900">
               ${pub.type}
             </span>
             <span class="text-xs font-semibold px-2 py-0.5 rounded bg-emerald-50 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-300">
@@ -475,14 +475,14 @@ function renderPublications() {
         <!-- Actions -->
         <div class="flex flex-wrap items-center justify-between gap-3 pt-3 border-t border-slate-200 dark:border-slate-700/80">
           <div class="text-xs text-slate-500 dark:text-slate-400 font-mono">
-            DOI: <a href="https://doi.org/${pub.doi}" target="_blank" rel="noopener noreferrer" class="text-indigo-600 dark:text-indigo-400 hover:underline">${pub.doi}</a>
+            DOI: <a href="https://doi.org/${pub.doi}" target="_blank" rel="noopener noreferrer" class="text-blue-600 dark:text-blue-400 hover:underline">${pub.doi}</a>
           </div>
 
           <div class="flex items-center gap-2">
             <button type="button" class="cite-pub-btn px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 hover:bg-slate-200 dark:hover:bg-slate-700 flex items-center gap-1.5 transition-colors" data-pub-id="${pub.id}">
               <span>📄</span> Cite / BibTeX
             </button>
-            <a href="${pub.pdfUrl}" class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-indigo-50 dark:bg-indigo-950/70 text-indigo-700 dark:text-indigo-300 hover:bg-indigo-100 dark:hover:bg-indigo-900 transition-colors flex items-center gap-1">
+            <a href="${pub.pdfUrl}" class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-blue-50 dark:bg-blue-950/70 text-blue-700 dark:text-blue-300 hover:bg-blue-100 dark:hover:bg-blue-900 transition-colors flex items-center gap-1">
               <span>⬇</span> PDF
             </a>
           </div>
@@ -517,7 +517,7 @@ function renderStudentProjects() {
       <div class="glass-card p-6 rounded-2xl flex flex-col justify-between reveal-on-scroll reveal-scale stagger-${(i % 3) + 1}">
         <div>
           <div class="flex items-center justify-between gap-2 mb-2">
-            <span class="text-xs font-medium text-indigo-600 dark:text-indigo-400">
+            <span class="text-xs font-medium text-blue-600 dark:text-blue-400">
               ${proj.academicYear}
             </span>
             <span class="text-xs font-semibold text-slate-500 dark:text-slate-400">
@@ -566,12 +566,12 @@ function renderCertifications() {
     .map(
       (cert, i) => `
       <div class="glass-card p-5 rounded-xl flex items-start gap-3.5 reveal-on-scroll reveal-left stagger-${(i % 5) + 1}">
-        <div class="w-10 h-10 rounded-xl bg-indigo-50 dark:bg-indigo-950 flex items-center justify-center shrink-0 text-lg">
+        <div class="w-10 h-10 rounded-xl bg-blue-50 dark:bg-blue-950 flex items-center justify-center shrink-0 text-lg">
           📜
         </div>
         <div class="flex-1">
           <div class="flex items-center justify-between gap-2 mb-1">
-            <span class="text-xs font-bold text-indigo-600 dark:text-indigo-400 uppercase tracking-wide">
+            <span class="text-xs font-bold text-blue-600 dark:text-blue-400 uppercase tracking-wide">
               ${cert.category} • ${cert.year}
             </span>
             <span class="text-xs font-medium text-slate-400">
@@ -605,12 +605,12 @@ function renderInstitutionalRoles() {
       (role, i) => `
       <div class="glass-card p-5 rounded-xl reveal-on-scroll reveal-right stagger-${(i % 4) + 1}">
         <div class="flex items-center gap-2 mb-2">
-          <span class="text-indigo-500 font-bold">🏛️</span>
+          <span class="text-blue-500 font-bold">🏛️</span>
           <h5 class="text-sm font-bold text-slate-900 dark:text-white">
             ${role.role}
           </h5>
         </div>
-        <div class="text-xs font-medium text-indigo-600 dark:text-indigo-400 mb-2">
+        <div class="text-xs font-medium text-blue-600 dark:text-blue-400 mb-2">
           ${role.department}
         </div>
         <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
@@ -635,14 +635,14 @@ function renderOfficeHours() {
   container.innerHTML = `
     <div class="space-y-3 text-sm text-slate-600 dark:text-slate-300">
       <div class="flex items-start gap-2.5">
-        <span class="text-indigo-600 font-bold">🕒</span>
+        <span class="text-blue-600 font-bold">🕒</span>
         <div>
           <span class="font-semibold block text-slate-900 dark:text-white">Office Hours:</span>
           <span>${officeHours.schedule}</span>
         </div>
       </div>
       <div class="flex items-start gap-2.5">
-        <span class="text-indigo-600 font-bold">📍</span>
+        <span class="text-blue-600 font-bold">📍</span>
         <div>
           <span class="font-semibold block text-slate-900 dark:text-white">Location:</span>
           <span>${officeHours.room}</span>
@@ -650,10 +650,10 @@ function renderOfficeHours() {
         </div>
       </div>
       <div class="flex items-start gap-2.5">
-        <span class="text-indigo-600 font-bold">✉️</span>
+        <span class="text-blue-600 font-bold">✉️</span>
         <div>
           <span class="font-semibold block text-slate-900 dark:text-white">Institutional Email:</span>
-          <a href="mailto:${personalInfo.email}" class="text-indigo-600 dark:text-indigo-400 hover:underline">${personalInfo.email}</a>
+          <a href="mailto:${personalInfo.email}" class="text-blue-600 dark:text-blue-400 hover:underline">${personalInfo.email}</a>
         </div>
       </div>
       <p class="text-xs text-slate-500 dark:text-slate-400 pt-2 border-t border-slate-200 dark:border-slate-700/80">
@@ -682,7 +682,7 @@ function openCiteModal(pub) {
     </div>
 
     <div class="flex justify-end gap-2">
-      <button type="button" id="copy-bibtex-btn" class="px-4 py-2 rounded-lg text-xs font-semibold bg-indigo-600 hover:bg-indigo-700 text-white transition-colors flex items-center gap-1.5">
+      <button type="button" id="copy-bibtex-btn" class="px-4 py-2 rounded-lg text-xs font-semibold bg-blue-600 hover:bg-blue-700 text-white transition-colors flex items-center gap-1.5">
         <span>📋</span> Copy BibTeX
       </button>
       <button type="button" class="close-modal-btn px-4 py-2 rounded-lg text-xs font-semibold bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-200 hover:bg-slate-300">
@@ -715,7 +715,7 @@ function openCourseModal(course) {
   modalContent.innerHTML = `
     <div class="mb-4">
       <div class="flex items-center gap-2 mb-1">
-        <span class="px-2 py-0.5 rounded text-xs font-mono font-bold bg-indigo-100 dark:bg-indigo-950 text-indigo-700 dark:text-indigo-300">
+        <span class="px-2 py-0.5 rounded text-xs font-mono font-bold bg-blue-100 dark:bg-blue-950 text-blue-700 dark:text-blue-300">
           ${course.code}
         </span>
         <span class="text-xs text-slate-500">${course.semester}</span>
@@ -728,7 +728,7 @@ function openCourseModal(course) {
       <h5 class="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">Course Materials & Downloads</h5>
       
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
-        <a href="${course.resources.syllabus}" class="p-3 rounded-lg border border-slate-200 dark:border-slate-700 hover:border-indigo-500 flex items-center gap-2.5 text-xs text-slate-700 dark:text-slate-200 transition-colors">
+        <a href="${course.resources.syllabus}" class="p-3 rounded-lg border border-slate-200 dark:border-slate-700 hover:border-blue-500 flex items-center gap-2.5 text-xs text-slate-700 dark:text-slate-200 transition-colors">
           <span>📄</span>
           <div>
             <div class="font-semibold">Course Syllabus (PDF)</div>
@@ -736,7 +736,7 @@ function openCourseModal(course) {
           </div>
         </a>
 
-        <a href="${course.resources.slides}" class="p-3 rounded-lg border border-slate-200 dark:border-slate-700 hover:border-indigo-500 flex items-center gap-2.5 text-xs text-slate-700 dark:text-slate-200 transition-colors">
+        <a href="${course.resources.slides}" class="p-3 rounded-lg border border-slate-200 dark:border-slate-700 hover:border-blue-500 flex items-center gap-2.5 text-xs text-slate-700 dark:text-slate-200 transition-colors">
           <span>📊</span>
           <div>
             <div class="font-semibold">Lecture Slides & Notes</div>
@@ -744,7 +744,7 @@ function openCourseModal(course) {
           </div>
         </a>
 
-        <a href="${course.resources.labManual}" class="p-3 rounded-lg border border-slate-200 dark:border-slate-700 hover:border-indigo-500 flex items-center gap-2.5 text-xs text-slate-700 dark:text-slate-200 transition-colors">
+        <a href="${course.resources.labManual}" class="p-3 rounded-lg border border-slate-200 dark:border-slate-700 hover:border-blue-500 flex items-center gap-2.5 text-xs text-slate-700 dark:text-slate-200 transition-colors">
           <span>💻</span>
           <div>
             <div class="font-semibold">Lab Manual & Problem Sets</div>
@@ -752,7 +752,7 @@ function openCourseModal(course) {
           </div>
         </a>
 
-        <a href="${course.resources.codeRepo}" target="_blank" rel="noopener noreferrer" class="p-3 rounded-lg border border-slate-200 dark:border-slate-700 hover:border-indigo-500 flex items-center gap-2.5 text-xs text-slate-700 dark:text-slate-200 transition-colors">
+        <a href="${course.resources.codeRepo}" target="_blank" rel="noopener noreferrer" class="p-3 rounded-lg border border-slate-200 dark:border-slate-700 hover:border-blue-500 flex items-center gap-2.5 text-xs text-slate-700 dark:text-slate-200 transition-colors">
           <span>🐙</span>
           <div>
             <div class="font-semibold">GitHub Code Repository</div>

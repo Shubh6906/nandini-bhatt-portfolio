@@ -1,9 +1,9 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="100%" height="100%">
   <defs>
     <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#3b82f6" />
-      <stop offset="50%" stop-color="#6366f1" />
-      <stop offset="100%" stop-color="#8b5cf6" />
+      <stop offset="0%" stop-color="#0284c7" />
+      <stop offset="50%" stop-color="#1d4ed8" />
+      <stop offset="100%" stop-color="#0f172a" />
     </linearGradient>
     <linearGradient id="suitGrad" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#1e293b" />
@@ -27,7 +27,7 @@
   <circle cx="200" cy="200" r="175" fill="url(#bgGrad)" opacity="0.2" />
 
   <!-- Code/Tech subtle background rings -->
-  <circle cx="200" cy="200" r="160" fill="none" stroke="#6366f1" stroke-width="2" stroke-dasharray="6,8" opacity="0.4" />
+  <circle cx="200" cy="200" r="160" fill="none" stroke="#2563eb" stroke-width="2" stroke-dasharray="6,8" opacity="0.4" />
   
   <g filter="url(#shadow)">
     <!-- Hair back -->
@@ -38,7 +38,7 @@
     <path d="M100 360 C100 290 145 260 200 260 C255 260 300 290 300 360 Z" fill="url(#suitGrad)" />
     <!-- Blouse / Inner Collar -->
     <path d="M175 260 L200 305 L225 260 Z" fill="#ffffff" />
-    <path d="M185 260 L200 295 L215 260 Z" fill="#6366f1" opacity="0.8" />
+    <path d="M185 260 L200 295 L215 260 Z" fill="#2563eb" opacity="0.8" />
     
     <!-- Neck -->
     <path d="M180 220 L220 220 L220 265 L180 265 Z" fill="url(#skinGrad)" />
@@ -76,7 +76,7 @@
 
     <!-- Graduation Cap / Academic Badge Icon Floating near shoulder -->
     <g transform="translate(285, 275)">
-      <circle cx="20" cy="20" r="24" fill="#6366f1" />
+      <circle cx="20" cy="20" r="24" fill="#1d4ed8" />
       <polygon points="20,10 32,16 20,22 8,16" fill="#ffffff" />
       <path d="M12,19 L12,25 C12,28 28,28 28,25 L28,19" fill="none" stroke="#ffffff" stroke-width="1.5" />
       <line x1="30" y1="17" x2="30" y2="27" stroke="#ffd700" stroke-width="1.5" />
