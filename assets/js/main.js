@@ -17,6 +17,7 @@ document.addEventListener("DOMContentLoaded", () => {
   renderOfficeHours();
   setupEventListeners();
   setupScrollSpy();
+  initScrollAnimations();
 });
 
 /* ==========================================================================
@@ -93,8 +94,8 @@ function renderHeroAndAbout() {
   if (badgesContainer) {
     badgesContainer.innerHTML = personalInfo.highlights
       .map(
-        h => `
-        <div class="px-3.5 py-2 rounded-lg bg-indigo-50/70 dark:bg-slate-800/80 border border-indigo-100 dark:border-slate-700">
+        (h, i) => `
+        <div class="px-3.5 py-2 rounded-lg bg-indigo-50/70 dark:bg-slate-800/80 border border-indigo-100 dark:border-slate-700 reveal-on-scroll reveal-scale stagger-${(i % 3) + 1}">
           <span class="block text-xs font-medium text-slate-500 dark:text-slate-400">${h.label}</span>
           <span class="block text-sm font-semibold text-indigo-900 dark:text-indigo-300">${h.value}</span>
         </div>`
@@ -111,9 +112,9 @@ function renderStats() {
   if (!container || !portfolioData.academicStats) return;
 
   container.innerHTML = portfolioData.academicStats
-    .map(stat => `
-      <div class="glass-card p-5 rounded-2xl text-center">
-        <div class="text-3xl lg:text-4xl font-extrabold text-indigo-600 dark:text-indigo-400 mb-1">
+    .map((stat, i) => `
+      <div class="glass-card p-5 rounded-2xl text-center reveal-on-scroll reveal-scale stagger-${(i % 4) + 1}">
+        <div class="text-3xl lg:text-4xl font-extrabold text-indigo-600 dark:text-indigo-400 mb-1 stat-number" data-target="${stat.number}">
           ${stat.number}
         </div>
         <div class="text-xs sm:text-sm font-medium text-slate-600 dark:text-slate-300">
@@ -122,6 +123,8 @@ function renderStats() {
       </div>
     `)
     .join("");
+
+  observeReveals(container);
 }
 
 /* ==========================================================================
@@ -135,7 +138,7 @@ function renderTimeline() {
     .map((item, index) => {
       const isCurrent = item.period.includes("Present");
       return `
-        <div class="relative pl-8 sm:pl-10 pb-8 last:pb-0 group">
+        <div class="relative pl-8 sm:pl-10 pb-8 last:pb-0 group reveal-on-scroll reveal-left stagger-${(index % 3) + 1}">
           <!-- Timeline Marker -->
           <div class="absolute left-0 top-1 w-6 h-6 rounded-full border-2 ${
             isCurrent
@@ -182,6 +185,8 @@ function renderTimeline() {
       `;
     })
     .join("");
+
+  observeReveals(container);
 }
 
 /* ==========================================================================
@@ -299,8 +304,8 @@ function renderCourses() {
 
   container.innerHTML = filteredCourses
     .map(
-      course => `
-      <div class="glass-card p-6 rounded-2xl flex flex-col justify-between">
+      (course, i) => `
+      <div class="glass-card p-6 rounded-2xl flex flex-col justify-between reveal-on-scroll reveal-scale stagger-${(i % 6) + 1}">
         <div>
           <!-- Course Header -->
           <div class="flex items-center justify-between gap-2 mb-3">
@@ -347,6 +352,8 @@ function renderCourses() {
     `
     )
     .join("");
+
+  observeReveals(container);
 
   // Attach modal handlers
   container.querySelectorAll(".open-course-modal").forEach(btn => {
@@ -424,7 +431,7 @@ function renderPublications() {
   }
 
   container.innerHTML = filtered
-    .map(pub => {
+    .map((pub, i) => {
       const formattedAuthors = pub.authors
         .map(a =>
           a.includes("Nandini Bhatt")
@@ -434,7 +441,7 @@ function renderPublications() {
         .join(", ");
 
       return `
-      <article class="glass-card p-6 rounded-2xl mb-4 transition-all">
+      <article class="glass-card p-6 rounded-2xl mb-4 transition-all reveal-on-scroll reveal-scale stagger-${(i % 4) + 1}">
         <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
           <div class="flex items-center gap-2">
             <span class="academic-badge bg-indigo-50 dark:bg-indigo-950/80 text-indigo-700 dark:text-indigo-300 border border-indigo-100 dark:border-indigo-900">
@@ -485,6 +492,8 @@ function renderPublications() {
     })
     .join("");
 
+  observeReveals(container);
+
   // Attach Cite Modal buttons
   container.querySelectorAll(".cite-pub-btn").forEach(btn => {
     btn.addEventListener("click", () => {
@@ -504,8 +513,8 @@ function renderStudentProjects() {
 
   container.innerHTML = portfolioData.studentProjectsGuided
     .map(
-      proj => `
-      <div class="glass-card p-6 rounded-2xl flex flex-col justify-between">
+      (proj, i) => `
+      <div class="glass-card p-6 rounded-2xl flex flex-col justify-between reveal-on-scroll reveal-scale stagger-${(i % 3) + 1}">
         <div>
           <div class="flex items-center justify-between gap-2 mb-2">
             <span class="text-xs font-medium text-indigo-600 dark:text-indigo-400">
@@ -542,6 +551,8 @@ function renderStudentProjects() {
     `
     )
     .join("");
+
+  observeReveals(container);
 }
 
 /* ==========================================================================
@@ -553,8 +564,8 @@ function renderCertifications() {
 
   container.innerHTML = portfolioData.certificationsAndFDPs
     .map(
-      cert => `
-      <div class="glass-card p-5 rounded-xl flex items-start gap-3.5">
+      (cert, i) => `
+      <div class="glass-card p-5 rounded-xl flex items-start gap-3.5 reveal-on-scroll reveal-left stagger-${(i % 5) + 1}">
         <div class="w-10 h-10 rounded-xl bg-indigo-50 dark:bg-indigo-950 flex items-center justify-center shrink-0 text-lg">
           📜
         </div>
@@ -578,6 +589,8 @@ function renderCertifications() {
     `
     )
     .join("");
+
+  observeReveals(container);
 }
 
 /* ==========================================================================
@@ -589,8 +602,8 @@ function renderInstitutionalRoles() {
 
   container.innerHTML = portfolioData.institutionalRoles
     .map(
-      role => `
-      <div class="glass-card p-5 rounded-xl">
+      (role, i) => `
+      <div class="glass-card p-5 rounded-xl reveal-on-scroll reveal-right stagger-${(i % 4) + 1}">
         <div class="flex items-center gap-2 mb-2">
           <span class="text-indigo-500 font-bold">🏛️</span>
           <h5 class="text-sm font-bold text-slate-900 dark:text-white">
@@ -607,6 +620,8 @@ function renderInstitutionalRoles() {
     `
     )
     .join("");
+
+  observeReveals(container);
 }
 
 /* ==========================================================================
@@ -875,3 +890,134 @@ function setupScrollSpy() {
     });
   });
 }
+
+/* ==========================================================================
+   15. Quick Scroll Animations, Transitions & Reading Progress
+   ========================================================================== */
+let revealObserver = null;
+
+function initScrollAnimations() {
+  initScrollProgress();
+  initHeaderElevation();
+  initRevealObserver();
+  observeReveals(document);
+
+  // Trigger elements already visible on load after initial render tick
+  requestAnimationFrame(() => {
+    document.querySelectorAll(".reveal-on-scroll").forEach(el => {
+      const rect = el.getBoundingClientRect();
+      if (rect.top < window.innerHeight && rect.bottom > 0) {
+        el.classList.add("is-revealed");
+        const statNumber = el.querySelector(".stat-number");
+        if (statNumber && !statNumber.dataset.animated) {
+          animateNumberCounter(statNumber);
+        }
+      }
+    });
+  });
+}
+
+function initScrollProgress() {
+  const progressEl = document.getElementById("scroll-progress");
+  if (!progressEl) return;
+
+  let ticking = false;
+  window.addEventListener(
+    "scroll",
+    () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          const scrollTop = window.scrollY || document.documentElement.scrollTop;
+          const docHeight =
+            document.documentElement.scrollHeight - document.documentElement.clientHeight;
+          const percent = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+          progressEl.style.width = `${Math.min(100, Math.max(0, percent))}%`;
+          ticking = false;
+        });
+        ticking = true;
+      }
+    },
+    { passive: true }
+  );
+}
+
+function initHeaderElevation() {
+  const header = document.querySelector("header");
+  if (!header) return;
+
+  window.addEventListener(
+    "scroll",
+    () => {
+      if (window.scrollY > 20) {
+        header.classList.add("shadow-lg", "shadow-slate-900/5", "dark:shadow-black/20");
+      } else {
+        header.classList.remove("shadow-lg", "shadow-slate-900/5", "dark:shadow-black/20");
+      }
+    },
+    { passive: true }
+  );
+}
+
+function initRevealObserver() {
+  if (!("IntersectionObserver" in window)) {
+    document.querySelectorAll(".reveal-on-scroll").forEach(el => el.classList.add("is-revealed"));
+    return;
+  }
+
+  revealObserver = new IntersectionObserver(
+    (entries, obs) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-revealed");
+
+          // Animate stat number if present
+          const statNumber = entry.target.querySelector(".stat-number");
+          if (statNumber && !statNumber.dataset.animated) {
+            animateNumberCounter(statNumber);
+          }
+
+          obs.unobserve(entry.target);
+        }
+      });
+    },
+    {
+      threshold: 0.05,
+      rootMargin: "0px 0px -40px 0px"
+    }
+  );
+}
+
+function observeReveals(root = document) {
+  if (!revealObserver) return;
+  const elements = root.querySelectorAll(".reveal-on-scroll:not(.is-revealed)");
+  elements.forEach(el => revealObserver.observe(el));
+}
+
+function animateNumberCounter(el) {
+  el.dataset.animated = "true";
+  const raw = el.dataset.target || el.textContent;
+  const numericPart = parseInt(raw.replace(/\D/g, ""), 10);
+  const suffix = raw.replace(/[0-9]/g, "");
+  if (isNaN(numericPart)) return;
+
+  const duration = 650;
+  const start = 0;
+  const startTime = performance.now();
+
+  function update(time) {
+    const elapsed = time - startTime;
+    const progress = Math.min(elapsed / duration, 1);
+    // Smooth easeOutCubic curve
+    const ease = 1 - Math.pow(1 - progress, 3);
+    const current = Math.floor(start + ease * (numericPart - start));
+    el.textContent = `${current}${suffix}`;
+    if (progress < 1) {
+      requestAnimationFrame(update);
+    } else {
+      el.textContent = raw;
+    }
+  }
+
+  requestAnimationFrame(update);
+}
+
