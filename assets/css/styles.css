@@ -198,7 +198,7 @@ h1, h2, h3, h4, h5, h6 {
     font-size: 11pt !important;
   }
 
-  header, nav, #contact-form-container, #back-to-top, .no-print, button, #toast, .modal-overlay {
+  header, nav, #contact-form-container, #back-to-top, .no-print, button, #toast, .modal-overlay, #scroll-progress {
     display: none !important;
   }
 
@@ -215,3 +215,80 @@ h1, h2, h3, h4, h5, h6 {
     text-decoration: underline !important;
   }
 }
+
+/* ==========================================================================
+   Quick Scroll Animations & Micro-Transitions
+   ========================================================================== */
+
+/* Top Reading Scroll Progress Bar */
+#scroll-progress {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 2.5px;
+  width: 0%;
+  background: linear-gradient(90deg, #6366f1, #3b82f6, #06b6d4);
+  box-shadow: 0 0 8px rgba(99, 102, 241, 0.6);
+  z-index: 50;
+  transition: width 0.1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Scroll Reveal Base Classes */
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1), transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.reveal-on-scroll.reveal-left {
+  transform: translateX(-24px);
+}
+
+.reveal-on-scroll.reveal-right {
+  transform: translateX(24px);
+}
+
+.reveal-on-scroll.reveal-scale {
+  transform: scale(0.95) translateY(12px);
+}
+
+/* Revealed Active State */
+.reveal-on-scroll.is-revealed {
+  opacity: 1;
+  transform: translate(0, 0) scale(1);
+}
+
+/* Staggered Transitions for Grid Cards */
+.stagger-1 { transition-delay: 50ms; }
+.stagger-2 { transition-delay: 100ms; }
+.stagger-3 { transition-delay: 150ms; }
+.stagger-4 { transition-delay: 200ms; }
+.stagger-5 { transition-delay: 250ms; }
+.stagger-6 { transition-delay: 300ms; }
+
+/* Subtle floating pulse animation for badges */
+@keyframes softPulse {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-3px); }
+}
+
+.animate-soft-float {
+  animation: softPulse 4s ease-in-out infinite;
+}
+
+/* Accessibility: Disable motion when requested by operating system */
+@media (prefers-reduced-motion: reduce) {
+  .reveal-on-scroll {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+  .animate-soft-float {
+    animation: none !important;
+  }
+  #scroll-progress {
+    display: none !important;
+  }
+}
+
